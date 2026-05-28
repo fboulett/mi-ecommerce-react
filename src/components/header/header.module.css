@@ -1,0 +1,51 @@
+.header {
+  background-color: rgba(17, 24, 39, 0.95);
+  padding: 16px 20px;
+  text-align: center;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+.logo {
+  width: 800px;
+  position: sticky;
+}
+.carrito {
+  width: 19px;
+}
+.nav {
+  background-color: rgba(170, 59, 255);
+  padding: 8px;
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  flex-direction: row;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  background: rgba(170, 59, 255, 0.1);
+  border: 1px solid white;
+  font: inherit;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
