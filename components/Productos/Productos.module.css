@@ -1,0 +1,15 @@
+.productos {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.producto {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+}
