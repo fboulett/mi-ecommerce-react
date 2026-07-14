@@ -1,7 +1,66 @@
 import styles from './header.module.css';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
+import { FaHome, FaBoxOpen, FaShoppingCart, FaEdit, FaUserCircle, FaSignInAlt } from 'react-icons/fa';
+
+const HeaderBar = styled.header`
+  background: linear-gradient(135deg, #5c3c8f 0%, #2f8080 100%);
+  padding: 12px 24px;
+  color: #fdfcf8;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(76, 88, 120, 0.24);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: 0 0 18px 18px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+const NavLinks = styled.ul`
+  display: flex;
+  list-style: none;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+`;
+
+const NavLink = styled(Link)`
+  color: #fdfcf8;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font: inherit;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+`;
+
+const ProfileLink = styled(NavLink)`
+  background: linear-gradient(135deg, #aa3bff 0%, #3db7b9 100%);
+  border-color: transparent;
+  font-weight: 600;
+`;
 
 function Header() {
   const { getCartQuantity } = useCart();
@@ -9,32 +68,32 @@ function Header() {
   const totalItems = getCartQuantity();
 
   return (
-    <header className={styles.header}>
+    <HeaderBar>
       <div className={styles.logo}>
         <h1 className={styles.title}>APEX STORE</h1>
       </div>
       <nav className={styles.nav}>
-        <ul className={styles.ul}>
-          <li><Link to="/" className={styles.link}>Inicio</Link></li>
-          <li><Link to="/productos" className={styles.link}>Productos</Link></li>
+        <NavLinks>
+          <li><NavLink to="/"><FaHome /> Inicio</NavLink></li>
+          <li><NavLink to="/productos"><FaBoxOpen /> Productos</NavLink></li>
           <li>
-            <Link to="/carrito" className={styles.link}>
-              Carrito 🛒 {totalItems > 0 && <span>({totalItems})</span>}
-            </Link>
+            <NavLink to="/carrito">
+              <FaShoppingCart /> Carrito {totalItems > 0 && <span>({totalItems})</span>}
+            </NavLink>
           </li>
           <li>
-            <Link to="/formulario" className={styles.link}>Editor</Link>
+            <NavLink to="/formulario"><FaEdit /> Editor</NavLink>
           </li>
           <li>
             {currentUser ? (
-              <Link to="/perfil" className={`${styles.link} ${styles.profileLink}`}>Perfil</Link>
+              <ProfileLink to="/perfil"><FaUserCircle /> Perfil</ProfileLink>
             ) : (
-              <Link to="/login" className={styles.link}>Ingresar</Link>
+              <NavLink to="/login"><FaSignInAlt /> Ingresar</NavLink>
             )}
           </li>
-        </ul>
+        </NavLinks>
       </nav>
-    </header>
+    </HeaderBar>
   );
 }
 export default Header;

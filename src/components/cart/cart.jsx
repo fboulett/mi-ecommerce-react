@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
+import { FaTrash, FaCreditCard, FaShoppingBasket } from 'react-icons/fa';
 
 const Cart = () => {
     const { cart, clearCart, removeFromCart, getCartTotal } = useCart();
@@ -7,7 +8,7 @@ const Cart = () => {
     if (!cart || cart.length === 0) {
         return (
             <div style={{ padding: 20 }}>
-                <h1>El carrito está vacío</h1>
+                <h1><FaShoppingBasket /> El carrito está vacío</h1>
                 <p>Agrega productos para continuar la compra.</p>
             </div>
         );
@@ -31,7 +32,7 @@ const Cart = () => {
                                 <p style={{ margin: '6px 0' }}>Subtotal: ${item.precio * item.quantity}</p>
                             </div>
                             <div>
-                                <button onClick={() => removeFromCart(item.id)} style={{ background: '#e53e3e', color: 'white', border: 'none', padding: '8px 12px', borderRadius: 6 }}>Eliminar</button>
+                                <button onClick={() => removeFromCart(item.id)} style={{ background: '#e53e3e', color: 'white', border: 'none', padding: '8px 12px', borderRadius: 6, display: 'flex', alignItems: 'center', gap: 6 }}><FaTrash /> Eliminar</button>
                             </div>
                         </div>
                     </div>
@@ -44,7 +45,7 @@ const Cart = () => {
                 <h2>Total a pagar: ${getCartTotal()}</h2>
                 <div style={{ display: 'flex', gap: 10 }}>
                     <button onClick={clearCart} style={{ padding: '8px 12px', borderRadius: 6 }}>Vaciar Carrito</button>
-                    <button onClick={() => alert('Proceder a pago (no implementado)')} style={{ padding: '8px 12px', background: '#3182ce', color: 'white', borderRadius: 6 }}>Pagar</button>
+                    <button onClick={() => alert('Proceder a pago (no implementado)')} style={{ padding: '8px 12px', background: '#3182ce', color: 'white', borderRadius: 6, display: 'flex', alignItems: 'center', gap: 6 }}><FaCreditCard /> Pagar</button>
                 </div>
             </div>
         </div>

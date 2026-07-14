@@ -1,6 +1,7 @@
 
 import React from 'react';
 import styles from './formulario.module.css';
+import { FaSave, FaEdit, FaTimes, FaTrash, FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
 
 export function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, errors = {}, deleteId, manejarDeleteChange, deleteAmount, manejarDeleteAmountChange, manejarEliminar, manejarAumentar, modoEdicion = false, manejarCargarProducto, cancelarEdicion, isLoading = false }) {
 
@@ -82,11 +83,11 @@ export function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, err
 
       <div className={styles.editActions}>
         <button type="button" className={styles.secondaryButton} onClick={manejarCargarProducto} disabled={isLoading}>
-          {isLoading ? 'Procesando...' : (modoEdicion ? 'Cargar producto' : 'Cargar para editar')}
+          {isLoading ? 'Procesando...' : <><FaEdit /> {modoEdicion ? 'Cargar producto' : 'Cargar para editar'}</>}
         </button>
         {modoEdicion && (
           <button type="button" className={styles.cancelButton} onClick={cancelarEdicion} disabled={isLoading}>
-            Cancelar edición
+            <FaTimes /> Cancelar edición
           </button>
         )}
       </div>
@@ -116,15 +117,15 @@ export function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, err
             onChange={manejarDeleteAmountChange}
           />
           <button type="button" className={styles.deleteButton} onClick={manejarEliminar} disabled={isLoading}>
-            {isLoading ? '...' : 'Eliminar'}
+            {isLoading ? '...' : <><FaTrash /> Eliminar</>}
           </button>
           <button type="button" className={styles.increaseButton} onClick={manejarAumentar} disabled={isLoading}>
-            {isLoading ? '...' : 'Aumentar'}
+            {isLoading ? '...' : <><FaPlusCircle /> Aumentar</>}
           </button>
         </div>
       </div>
       <button className={styles.button} type="submit" disabled={isLoading}>
-        {isLoading ? 'Procesando...' : (modoEdicion ? 'Actualizar Producto' : 'Guardar Producto')}
+        {isLoading ? 'Procesando...' : <><FaSave /> {modoEdicion ? 'Actualizar Producto' : 'Guardar Producto'}</>}
       </button>
       {isLoading && <div className={styles.spinner} aria-label="Cargando" />}
     </form>
