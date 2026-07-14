@@ -30,9 +30,10 @@ function HomeBanner() {
       </p>
       <div style={{ position: 'relative', width: '100%', overflow: 'hidden', borderRadius: '18px', marginTop: '1.25rem' }}>
         <img
+          key={banners[currentIndex]}
           src={banners[currentIndex]}
           alt={`Banner promocional ${currentIndex + 1}`}
-          style={{ width: '100%', height: '260px', objectFit: 'contain', display: 'block', backgroundColor: '#f8fafc', transition: 'opacity 0.4s ease-in-out' }}
+          style={{ width: '100%', height: '260px', objectFit: 'contain', display: 'block', backgroundColor: '#f8fafc', transition: 'opacity 0.45s ease-in-out', opacity: 1 }}
         />
         <button type="button" onClick={showPrev} aria-label="Banner anterior" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', background: 'rgba(0,0,0,0.55)', color: 'white', fontSize: '1.2rem' }}>←</button>
         <button type="button" onClick={showNext} aria-label="Banner siguiente" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', background: 'rgba(0,0,0,0.55)', color: 'white', fontSize: '1.2rem' }}>→</button>
