@@ -1,0 +1,57 @@
+.footer {
+  background: linear-gradient(
+    135deg,
+    rgba(170, 59, 255, 0.16) 0%,
+    rgba(61, 183, 185, 0.3) 100%
+  );
+  padding: 14px 20px 18px;
+  text-align: center;
+  color: #2f2341;
+  width: 100%;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.12);
+  margin-top: auto;
+  border-top: 1px solid rgba(95, 60, 143, 0.16);
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.teamIcons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.teamMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 120px;
+}
+
+.teamIcon {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.teamDescription {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #47395a;
+  text-align: center;
+  line-height: 1.2;
+}

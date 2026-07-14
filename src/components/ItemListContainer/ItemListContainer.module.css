@@ -1,0 +1,12 @@
+.subtitulo{
+padding:1rem 1rem 0 1rem;
+}
+.productos{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding:2rem;
+width: 100%;
+gap: 2rem;
+}
