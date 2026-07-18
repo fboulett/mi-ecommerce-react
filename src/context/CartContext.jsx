@@ -23,6 +23,10 @@ export const CartProvider = ({ children }) => {
         }
     });
 
+    const [coupon, setCoupon] = useState(null);
+    const [discount, setDiscount] = useState(0);
+    const [discountAmount, setDiscountAmount] = useState(0);
+
     useEffect(() => {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
@@ -53,19 +57,44 @@ export const CartProvider = ({ children }) => {
 
     const clearCart = () => {
         setCart([]);
+        setCoupon(null);
+        setDiscount(0);
+        setDiscountAmount(0);
+    };
+
+    const applyCoupon = (couponData) => {
+        setCoupon(couponData);
+        setDiscount(couponData.descuento);
+    };
+
+    const removeCoupon = () => {
+        setCoupon(null);
+        setDiscount(0);
+        setDiscountAmount(0);
     };
 
     const totalItems = useMemo(
         () => cart.reduce((total, item) => total + (item.quantity || 0), 0),
         [cart]
     );
+    
     const totalPrice = useMemo(
         () => cart.reduce((total, item) => total + ((item.precio || item.price || 0) * (item.quantity || 0)), 0),
         [cart]
     );
 
+    const discountValue = useMemo(() => {
+        const discountAmountValue = (totalPrice * discount) / 100;
+        setDiscountAmount(discountAmountValue);
+        return discountAmountValue;
+    }, [totalPrice, discount]);
+
+    const finalPrice = useMemo(() => {
+        return totalPrice - discountValue;
+    }, [totalPrice, discountValue]);
+
     const getCartQuantity = () => totalItems;
-    const getCartTotal = () => totalPrice;
+    const getCartTotal = () => finalPrice;
 
     return (
         <CartContext.Provider
@@ -76,6 +105,12 @@ export const CartProvider = ({ children }) => {
                 clearCart,
                 totalItems,
                 totalPrice,
+                discount,
+                discountAmount,
+                finalPrice,
+                coupon,
+                applyCoupon,
+                removeCoupon,
                 getCartQuantity,
                 getCartTotal,
             }}

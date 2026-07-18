@@ -20,6 +20,7 @@ const ProductCard = ({ product }) => {
     const precio = product.precio ?? product.price ?? 0;
     const imagen = product.imagen || product.image || product.img || '';
     const stock = product.stock ?? product.cantidad ?? product.quantity ?? 0;
+    const descripcion = product.descripcion || product.description || '';
 
     const handleAddToCart = () => {
         addToCart({
@@ -37,6 +38,7 @@ const ProductCard = ({ product }) => {
             <div className={styles.cardBody}>
                 <h2>{nombre}</h2>
                 <p className={styles.code}>Codigo Artículo: {product.id}</p>
+                {descripcion && <p className={styles.description}>{descripcion}</p>}
                 {currentUser ? <p>{formatPrice(precio)}</p> : <p>Inicia sesión para ver el precio</p>}
                 <p>Stock: {stock}</p>
                 <button

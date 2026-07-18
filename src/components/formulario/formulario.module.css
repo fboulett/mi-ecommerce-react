@@ -99,6 +99,13 @@
   gap: 8px;
   margin-top: 12px;
   align-items: center;
+  flex-wrap: wrap;
+}
+.buttonRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: flex-start;
 }
 .deleteSection {
   margin: 12px 0;

@@ -116,6 +116,8 @@ export function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, err
             value={deleteAmount || ''}
             onChange={manejarDeleteAmountChange}
           />
+        </div>
+        <div className={styles.buttonRow}>
           <button type="button" className={styles.deleteButton} onClick={manejarEliminar} disabled={isLoading}>
             {isLoading ? '...' : <><FaTrash /> Eliminar</>}
           </button>

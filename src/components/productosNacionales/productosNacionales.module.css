@@ -131,6 +131,13 @@
   margin: 0;
   font-weight: 600;
 }
+.description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.4;
+  font-style: italic;
+}
 .price {
   font-weight: 600;
   color: #111;
